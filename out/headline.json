@@ -1,0 +1,67 @@
+{
+  "raw_prescribers": 7759,
+  "target_prescribers": 3282,
+  "target_value_share_pct": 95.6,
+  "nontarget_prescribers_pct": 57.7,
+  "total_value_usd": 58655254,
+  "pareto_50_pct_of_prescribers": 6.8,
+  "pareto_80_pct_of_prescribers": 21.5,
+  "total_calls": 37410,
+  "capacity_total": 36000,
+  "reps": 45,
+  "before": {
+    "load_std": 306.9868,
+    "load_cv": 0.3693,
+    "potential_std": 492801.8255,
+    "excess_calls": 5772.0,
+    "reps_over_capacity": 27.0,
+    "captured_hard_pct": 0.8446,
+    "captured_smooth_pct": 0.8581
+  },
+  "after": {
+    "load_std": 16.2262,
+    "load_cv": 0.0195,
+    "potential_std": 232666.6393,
+    "excess_calls": 1420.0,
+    "reps_over_capacity": 40.0,
+    "captured_hard_pct": 0.9618,
+    "captured_smooth_pct": 0.8908,
+    "disruption_pct": 0.2212,
+    "disruption_value_pct": 0.0791,
+    "tier_a_moved": 3.0,
+    "above_median_moved": 90.0,
+    "n_moved": 726.0
+  },
+  "full_moves": 726,
+  "load_std_reduction_pct": 94.7,
+  "excess_reduction_pct": 75.4,
+  "frontier_10pct": {
+    "load_stddev": 136.3,
+    "captured_hard_pct": 90.08,
+    "captured_smooth_pct": 88.08,
+    "disruption_value_pct": 3.64
+  },
+  "frontier_20pct": {
+    "load_stddev": 28.5,
+    "captured_hard_pct": 95.69,
+    "captured_smooth_pct": 88.99,
+    "disruption_value_pct": 7.15
+  },
+  "sizing_optimum": {
+    "high": {
+      "n_reps": 50,
+      "cost_per_rep": 160000.0,
+      "profit": 27886642.0
+    },
+    "low": {
+      "n_reps": 65,
+      "cost_per_rep": 80000.0,
+      "profit": 32427895.0
+    },
+    "mid": {
+      "n_reps": 56,
+      "cost_per_rep": 120000.0,
+      "profit": 30020607.0
+    }
+  }
+}
