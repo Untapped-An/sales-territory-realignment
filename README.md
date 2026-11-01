@@ -15,7 +15,7 @@ years its territories drifted. Three questions:
 ## Data
 | Layer | Source |
 |---|---|
-| Prescribers, value, specialty, city | **Real** — CMS Medicare Part D Prescriber data 2014 (BigQuery public dataset `cms_medicare.part_d_prescriber_2014`), Ohio, rivaroxaban / apixaban / warfarin, aggregated per NPI |
+| Prescribers, value, specialty, city | **Real** — CMS Medicare Part D Prescriber data 2014 (BigQuery public dataset `cms_medicare.part_d_prescriber_2014`), Ohio, rivaroxaban / apixaban / warfarin, aggregated per NPI by `sql/bigquery_extract.sql` |
 | Region | City → 5 metro regions (hand-built mapping, `src/geo.py`) |
 | Rep territories (baseline) | **Synthetic** — no company publishes who covers which doctor; a legacy-drift model creates a realistic uneven map |
 | Capacity, call plan, costs | Assumptions, all in `config.py` |
@@ -56,7 +56,7 @@ python sql/run_sql.py    # descriptive SQL (MySQL 8 / SQLite compatible)
 config.py            every assumption, in one file
 run_all.py           one command: clean -> baseline -> rebalance -> frontier -> sizing -> sensitivity
 src/                 clean.py, geo.py, model.py, frontier.py, sizing.py, sensitivity.py
-sql/                 descriptive SQL (CTEs, window functions) + runner
+sql/                 BigQuery extract queries; descriptive SQL (CTEs, window functions) + runner
 data/clean/          BigQuery extract (input) and generated account/rep tables
 out/                 Tableau-ready CSVs, sanity-check charts, headline.json
 ```
@@ -66,6 +66,7 @@ out/                 Tableau-ready CSVs, sanity-check charts, headline.json
 
 ## Limitations
 - **2014 data**, Medicare Part D only — apixaban (Eliquis) was early in launch; commercial prescribing is absent.
+- **Three molecules, not four:** dabigatran (Pradaxa) was dropped by a truncated name in the extract query; adding it (~1,500 prescribers, ~$19.9M) is the first extension. See `sql/bigquery_extract.sql`.
 - **Suppression:** CMS drops prescriber–drug rows below 11 claims, so light prescribers are under-represented.
 - **Baseline territories are synthetic**; findings about the realignment are about the method, not a real company.
 - **Response curve assumed, not estimated**; both forms reported to show the conclusion holds.

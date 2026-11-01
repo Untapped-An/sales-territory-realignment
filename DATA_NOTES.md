@@ -2,9 +2,12 @@
 
 Source: `bigquery-public-data.cms_medicare.part_d_prescriber_2014`, filtered to
 Ohio and generic names RIVAROXABAN, APIXABAN, WARFARIN SODIUM, aggregated to one
-row per NPI in BigQuery (Query A). Dabigatran was deliberately excluded (out of
-scope); Query B's per-drug totals reconcile exactly with Query A once it is removed
-(949,780 claims, $58,655,254).
+row per NPI in BigQuery (Query A, in `sql/bigquery_extract.sql`). Dabigatran
+was intended to be in scope, but its name was entered from a truncated result
+cell ('DABIGATRAN ETEXILATE MESY...') and matched no rows, so the analysis covers
+three molecules. Query B's per-drug totals reconcile exactly with Query A for
+those three (949,780 claims, $58,655,254); dabigatran (1,500 prescribers,
+~$19.9M) is the main documented gap.
 
 | # | Issue | Finding | Decision |
 |---|---|---|---|
